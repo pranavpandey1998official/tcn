@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom'
-import Navbar from './navbar/Navbar';
-import LogOut from './logOut/logOut';
+import Main from './component/signIn/Main';
+import LogOut from './component/logOut/logOut';
+import {connect } from 'react-redux'
+
 
 class App extends Component {
   render() {
-    return (
-      <BrowserRouter> 
-       
-        <div className="App">
-          <LogOut />
-        </div>
+    const { auth } = this.props;
 
-      </BrowserRouter>
+    const link = auth.uid ? <Main /> : <LogOut />
+    return (
+      
+        <BrowserRouter> 
+          <div className="App">
+            { link }
+          </div>
+        </BrowserRouter>
     );
   }
 }
 
-export default App;
+var mapStateToProps = (state) => {
+  return {
+    auth :state.firebase.auth
+  }
+}
+
+export default connect(mapStateToProps)(App);

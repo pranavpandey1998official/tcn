@@ -17,6 +17,7 @@
       <!--Import materialize.css-->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="../src/index.css">
       <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -26,6 +27,17 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <style>
+    #root2 {
+      padding-left: 300px;
+    }
+
+    @media only screen and (max-width : 992px) {
+      #root2 {
+        padding-left: 0;
+      }
+    }
+    </style>
     <title>React App</title>
   </head>
 
@@ -33,6 +45,7 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+ 
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -52,20 +65,6 @@
     $(document).ready(function(){
       $('.sidenav').sidenav();
     })
-    </script>
-
-    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyDVBBZ7yhse6T3vNCu5bR8ZORNlf_v43t4",
-        authDomain: "the-crop-nation.firebaseapp.com",
-        databaseURL: "https://the-crop-nation.firebaseio.com",
-        projectId: "the-crop-nation",
-        storageBucket: "the-crop-nation.appspot.com",
-        messagingSenderId: "880552565003"
-      };
-      firebase.initializeApp(config);
     </script>
   </body>
   
