@@ -1,30 +1,43 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom'
-import Main from './component/signIn/Main';
+import SupplierMain from './component/supplier/Main';
+import ConsumerMain from './component/consumer/Main';
 import LogOut from './component/logOut/logOut';
 import {connect } from 'react-redux'
-
+import { withRouter } from "react-router";
 
 class App extends Component {
-  render() {
-    const { auth } = this.props;
 
-    const link = auth.uid ? <Main /> : <LogOut />
+  componentWillReceiveProps(nextProps){
+    if(nextProps.auth!==this.props.auth){
+      this.props.history.push('/')
+    }
+  }
+  render() {
+    const { auth,profile } = this.props;
+    console.log(this.props)
+    var link ={}
+    if(auth.uid==null||this.props.profile.isEmpty){
+      link=<LogOut/>
+    }
+    else{
+      link=profile.type=="consumer" ?<ConsumerMain />:<SupplierMain />
+    }
     return (
-      
-        <BrowserRouter> 
           <div className="App">
             { link }
           </div>
-        </BrowserRouter>
+        
     );
   }
 }
 
 var mapStateToProps = (state) => {
   return {
-    auth :state.firebase.auth
+    auth :state.firebase.auth,
+    profile:state.firebase.profile,
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default 
+withRouter(connect(mapStateToProps)(App));

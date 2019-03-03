@@ -13,8 +13,27 @@
   
 }
 
+.anchoreColor{
+  fill:red;
+}
+.quotes{
+  font-style: italic;
+  margin-left: 32px;
+  font-size: 30px;
+  font-family: Georgia, "Times New Roman", serif;
+}
+.modal { max-height: 100%; overflow: visible}
 @media only screen and (max-width : 992px) {
 .main {
     padding-left: 0;
   }
+}
+
+.myorderImage{
+  max-height: auto;
+  overflow: hidden;
+}
+.btn{
+  margin-left:2px;
+  margin-right:2px;
 }

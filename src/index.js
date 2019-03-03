@@ -5,9 +5,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import Store from './Store/Store';
+import { BrowserRouter } from 'react-router-dom'
 
 Store.firebaseAuthIsReady.then(()=> {
-    ReactDOM.render(<Provider store = { Store }><App /></Provider>, document.getElementById('root'));
+    ReactDOM.render(<BrowserRouter><Provider store = { Store }><App /></Provider></BrowserRouter>, document.getElementById('root'));
 })
 
 

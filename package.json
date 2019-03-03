@@ -4,11 +4,11 @@
   "private": true,
   "dependencies": {
     "firebase": "^5.7.3",
-    "google-map-react": "^1.1.2",
-    "google-maps-react": "^2.0.2",
+    "mapbox-gl": "^0.53.1",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-mapbox-gl": "^4.2.0",
     "react-redux": "5.0.7",
     "react-redux-firebase": "^2.2.6",
     "react-router": "^4.3.1",
