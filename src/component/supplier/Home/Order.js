@@ -10,7 +10,6 @@ class Order extends React.Component{
     constructor(props) {
         super(props);
         this.state = {range: 0};
-    
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
@@ -41,15 +40,9 @@ class Order extends React.Component{
     }
     render(){
         var item = this.props.item
-        if(item.shipments!=null){
-            item.shipments[0].get().then((item)=>{
-                console.log('get item')
-                console.log(item.data());
-            })
-        }
     return(
         <>
-        <a className="modal-trigger" href="#modal1">
+        <a className="modal-trigger" href={"#"+item.id}>
        <div className="row hoverable valign-wrapper">
         <div className="col m3 left">
             <img src={"/photoOfCrop"+"/"+item.name+".jpg"} className="responsive-img center" alt=""/>
@@ -84,7 +77,7 @@ class Order extends React.Component{
         </div>
        </div>
        </a>
-       <div id="modal1" class="modal modal-fixed-footer">
+       <div id={item.id} class="modal modal-fixed-footer">
         <div class="modal-content">
         <div className="row">
             <div className="col s12 m6">
