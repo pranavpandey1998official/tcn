@@ -10,6 +10,11 @@ import {Map} from '../utility';
 
 class CreateOrder extends React.Component {
 
+    componentDidMount(){
+        var elems = document.querySelectorAll('.modal');
+        M.Modal.init(elems);
+    }
+
     state = {
         amount : 0,
     }
@@ -55,7 +60,7 @@ class CreateOrder extends React.Component {
                       <label for="amount">Amount</label>
                     </div>
                 </div>
-                <button data-target="modal1" class="btn modal-trigger purple ">Modal
+                <button data-target="modal1" class="btn modal-trigger purple ">
                     create order
                 </button>
                 </div>

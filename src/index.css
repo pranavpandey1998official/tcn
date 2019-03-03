@@ -35,5 +35,10 @@
 }
 .btn{
   margin-left:2px;
+  margin-bottom:10px;
   margin-right:2px;
+}
+
+.firstLetter{
+  text-transform: capitalize;
 }

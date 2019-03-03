@@ -22,7 +22,9 @@ class Home extends React.Component {
         <div className="row">
 
         {items ? items.map((item)=>(
-            <Order name={item.name} key={item.id} price={item.price} onClickFabListner={this.onClickFabListner}/>
+            <div className="row">
+                <Order name={item.name} key={item.id} price={item.price} onClickFabListner={this.onClickFabListner}/>
+                </div>
         )) : null}
         </div>
        </div>
