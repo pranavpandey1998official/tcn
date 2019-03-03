@@ -28,9 +28,16 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    if(state.firestore.ordered.order==null){
+        var order=[]
+    }
+    else{
+    var order=state.firestore.ordered.order.filter((order)=>(
+        order.remainingAmount > 0
+    ))}
     console.log(state)
     return{
-        items:state.firestore.ordered.order
+        items:order
     }
 }
 export default compose(
