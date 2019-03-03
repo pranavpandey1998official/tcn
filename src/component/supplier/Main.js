@@ -4,11 +4,13 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './Home/Home';
 import Profile from './Profile/Profile';
 import MyShipments from './MyShipmennts/MyShipments'
-//import MyOrder from './MyOrder/MyOrder';
-//import Profile from './Profile/Profile';
-//import CreateOrder from './CreateOrder/CreateOrder';
+import M from 'materialize-css';
 
 class Main extends React.Component {
+    componentDidMount(){
+        var elems = document.querySelectorAll('.sidenav');
+         M.Sidenav.init(elems);
+    }
     style = {
         root:{
 

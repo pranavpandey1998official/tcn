@@ -18,7 +18,7 @@ render() {
 var mapStateToProps =(state)=>{
     if(state.firestore.ordered.order!=null){
     var order =state.firestore.ordered.order.filter((order)=>
-        order.consumerId==state.firebase.auth.uid
+        order.consumerId===state.firebase.auth.uid
     )}
     else var order = []
     console.log(order);
@@ -28,10 +28,5 @@ var mapStateToProps =(state)=>{
     }
 }
 
-var mapDispatchToProps =(dispatch)=>{
-
-   
-
-}
 
 export default compose(firestoreConnect([{ collection: 'order'}]), connect(mapStateToProps))(MyOrder)

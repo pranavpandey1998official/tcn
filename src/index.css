@@ -42,3 +42,23 @@
 .firstLetter{
   text-transform: capitalize;
 }
+
+.threeprofit{
+  border-radius: 40px;
+  font:Roboto;
+  font-size: 3em;
+  text-align: center;
+  position: relative;
+}
+.threeprofit  .col:nth-child( 2){
+  border-right: 5px solid black;
+  border-left: 5px solid black;
+  height: 100%;
+}
+
+.parallax-container .col:nth-child(2){
+  background-color: rgba(223, 217, 217, 0.527)!important; 
+  font-weight: 600;
+  padding: 1em;
+  border-radius: 1em;
+}

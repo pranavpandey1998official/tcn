@@ -8,7 +8,7 @@ const Navbar = () => {
         <div className="container">
             
             <Link to='/' className="brand-logo"> TCN</Link>
-            <a href="#" className="sidenav-trigger" data-target="mobile-links">
+            <a href="/" className="sidenav-trigger" data-target="mobile-links">
                 <i className="material-icons">menu</i>
             </a>
 
@@ -16,12 +16,12 @@ const Navbar = () => {
                 <li > <Link to='/signup' >Signup</Link> </li>
                 <li > <Link to='/signin' >Signin</Link> </li>
                 <li className="push-l3">
-                    <a href="#" className="btn-floating btn-small indigo">
+                    <a href="/" className="btn-floating btn-small indigo">
                         <i className="fa fa-facebook"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="#" className="btn-floating btn-small indigo">
+                    <a href="/" className="btn-floating btn-small indigo">
                         <i className="fa fa-instagram"></i>
                     </a>
                 </li>

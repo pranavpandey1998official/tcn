@@ -5,8 +5,12 @@ import Home from './Home/Home';
 import MyOrder from './MyOrder/MyOrder';
 import Profile from './Profile/Profile';
 import CreateOrder from './CreateOrder/CreateOrder';
-
+import M from 'materialize-css';
 class Main extends React.Component {
+    componentDidMount(){
+        var elems = document.querySelectorAll('.sidenav');
+         M.Sidenav.init(elems);
+    }
     style = {
         root:{
 

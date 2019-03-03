@@ -8,7 +8,7 @@ const Order = (props) => {
         <div class="col s12 m12">
         <div class="card horizontal ">
             <div class="card-image ">
-                <img src={"/photoOfCrop"+"/"+props.name+".jpg"} className="responsive-img" />
+                <img src={"/photoOfCrop/"+props.name+".jpg"} className="responsive-img" alt=""/>
                 <div className="row center-align">
                     <div className="btn yellow lighten-2 black-text"> Market Price 100&#8377;</div>
                 </div>
@@ -26,7 +26,7 @@ const Order = (props) => {
 
             </div>
             <div class="card-action">
-                <a class="btn  red" onClick={()=>props.onClickFabListner(props.name)}><i class="material-icons">add_shopping_cart</i></a>
+                <div class="btn  red" onClick={()=>props.onClickFabListner(props.name)}><i class="material-icons">add_shopping_cart</i></div>
             </div>
             </div>
         </div>

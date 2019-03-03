@@ -1,6 +1,6 @@
 import React from 'react';
 import {Map} from '../utility';
-import ReactMapboxGl, { Layer, Feature,Marker } from "react-mapbox-gl";
+import{ Marker } from "react-mapbox-gl";
 import M from 'materialize-css';
 import {connect} from 'react-redux';
 import {createShipment} from '../../../Store/actions/orderAction';
@@ -20,7 +20,7 @@ class Order extends React.Component{
     
       handleSubmit(event) {
         event.preventDefault();
-        if(this.state.range==0){
+        if(this.state.range===0){
             alert("cannot create shipment with 0 amount")
             return
         }
@@ -45,7 +45,7 @@ class Order extends React.Component{
         <a className="modal-trigger" href={"#"+item.id}>
        <div className="row hoverable valign-wrapper">
         <div className="col m3 left">
-            <img src={"/photoOfCrop"+"/"+item.name+".jpg"} className="responsive-img center" alt=""/>
+            <img src={"/photoOfCrop/"+item.name+".jpg"} className="responsive-img center" alt=""/>
         </div>
         <div className="col m6">
             <p><b>Item</b> {item.name} </p>
@@ -71,7 +71,7 @@ class Order extends React.Component{
             <Marker
                 coordinates={[item.consumerLocation.longitude,item.consumerLocation.latitude ]}
                 anchor="bottom">
-                <img className="anchoreColor" src="/baseline-place-24px.svg"/>
+                <img className="anchoreColor" src="/baseline-place-24px.svg" alt=""/>
             </Marker>
         </Map>
         </div>
@@ -92,7 +92,7 @@ class Order extends React.Component{
                     <Marker
                         coordinates={[item.consumerLocation.longitude,item.consumerLocation.latitude ]}
                         anchor="bottom">
-                        <img className="anchoreColor" src="/baseline-place-24px.svg"/>
+                        <img className="anchoreColor" src="/baseline-place-24px.svg" alt=""/>
                     </Marker>
                 </Map>
             </div>
