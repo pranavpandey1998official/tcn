@@ -1,0 +1,35 @@
+:root {
+    --color-dot: #7aca51;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.content .dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 5px solid var(--color-dot);
+    border-right-color: transparent;
+    animation: rotat 2s infinite;
+}
+
+@keyframes rotat {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

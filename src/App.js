@@ -5,7 +5,7 @@ import ConsumerMain from './component/consumer/Main';
 import LogOut from './component/logOut/logOut';
 import {connect } from 'react-redux'
 import { withRouter } from "react-router";
-
+import Loading from './loading/Loading'
 class App extends Component {
 
   componentWillReceiveProps(nextProps){
@@ -17,8 +17,11 @@ class App extends Component {
     const { auth,profile } = this.props;
     console.log(this.props)
     var link ={}
-    if(auth.uid==null||this.props.profile.isEmpty){
-      link=<LogOut/>
+    if(auth.uid==null){
+      link = <LogOut/>
+    }
+    else if(auth.uid==null||this.props.profile.isEmpty){
+      link=<Loading />
     }
     else{
       link=profile.type=="consumer" ?<ConsumerMain />:<SupplierMain />
