@@ -10,7 +10,6 @@ import {months} from '../utility'
             <div className="col s6 m6">
                 <p><b>Total Aount</b> {order.totalAmount} Kg</p>
                 <p><b>  Item Purchased At cost </b>{order.cost} Rs</p>
-                <div className="btn red "> Amount Remaining {order.remainingAmount} Kg</div>
             </div>
         </div>
 

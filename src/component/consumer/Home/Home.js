@@ -11,8 +11,8 @@ class Home extends React.Component {
         super(props);
         this.onClickFabListner=this.onClickFabListner.bind(this);
     }
-   onClickFabListner=()=> {
-       this.props.history.push("/createOrder/apple")
+   onClickFabListner=(name)=> {
+       this.props.history.push("/createOrder/"+name)
    }
     render(){
         var {items}= this.props
