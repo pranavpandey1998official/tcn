@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect} from 'react-redux-firebase';
 import M from 'materialize-css';
-import { dispatch } from 'rxjs/internal/observable/pairs';
 import { createOrder } from '../../../Store/actions/orderAction';
 import  { Marker } from "react-mapbox-gl";
 import {Map} from '../utility';
@@ -105,7 +104,6 @@ class CreateOrder extends React.Component {
 
 }
 var mapStateToProps =(state)=>{
-    console.log(state);
     var profile=state.firebase.profile.isEmpty? {BackAccountNo: 0,
         IFSC: "",
         firstName: "",

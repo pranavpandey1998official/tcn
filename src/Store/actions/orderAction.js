@@ -3,14 +3,15 @@ export const createOrder = ( order ) => {
     return (dispatch,getState, { getFirebase,getFirestore }) =>{
         const firestore = getFirestore();
         const state=getState()
+        console.log(order.item)
         firestore.collection('order').add( { 
-            name: order.item.name,
-            cost: order.item.price,
+            product:firestore.doc('rates/'+order.item.id),
             consumerId: state.firebase.auth.uid,
-            consumerLocation:state.firebase.profile.location,
+            consumer:firestore.doc('users/'+state.firebase.auth.uid),
             date:new Date(),
-            remainingAmount: order.amount,
-            totalAmount: order.amount,
+            amount: parseInt(order.amount),
+            rate:order.item.price,
+            name:order.item.name
          })
 
     }
@@ -21,17 +22,25 @@ export const createShipment = (shipment) =>{
     return (dispatch,getState, { getFirebase,getFirestore }) =>{
         const firestore = getFirestore();
         const state =getState();
-        firestore.collection('shipments').add({
-            shiperId:state.firebase.auth.uid,
-            shiper:firestore.doc('users/' + state.firebase.auth.uid),
-            orderOfShipment:firestore.doc('order/' + shipment.id),
-            amount:shipment.amount,
-        }).then((item)=>{
-            firestore.collection('order').doc(shipment.id).update({
-                remainingAmount:shipment.remainingAmount,
-                shipments:firestore.FieldValue.arrayUnion(firestore.doc('shipments/' + item.id))
-            })
+        firestore.collection('shipment').add({
+            supplierId:state.firebase.auth.uid,
+            supplier:firestore.doc('users/' + state.firebase.auth.uid),
+            product:firestore.doc('rates/' + shipment.id),
+            amount:parseInt(shipment.amount),
+            date:new Date(),
+            name:shipment.name
         })
 
+    }
+}
+
+export const changePrice = (item) => {
+
+    return (dispatch,getState, { getFirebase,getFirestore }) =>{
+        const firestore = getFirestore();
+        firestore.collection('rates').doc(item.id).update({
+            price:item.price,
+            marketPrice: item.marketPrice
+        })
     }
 }

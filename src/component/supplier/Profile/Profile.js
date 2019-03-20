@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import ReactMapboxGl, { Layer, Feature,Marker } from "react-mapbox-gl";
+import { Layer, Feature,Marker } from "react-mapbox-gl";
 import { compose } from 'redux';
 import { firestoreConnect} from 'react-redux-firebase';
 import {Map} from '../utility';
@@ -63,7 +63,6 @@ const Profile = (props) => {
 }
 
 var mapStateToProps =(state)=>{
-    console.log(state);
     var profile=state.firebase.profile.isEmpty? {BackAccountNo: 0,
         IFSC: "",
         firstName: "",

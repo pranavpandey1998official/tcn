@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect} from 'react-redux-firebase';
 import Order from './Order'
-class MyOrder extends React.Component {
+class Orders extends React.Component {
 render() {
     return(
         <ul>
@@ -18,9 +18,8 @@ render() {
 var mapStateToProps =(state)=>{
     var order
     if(state.firestore.ordered.order!=null){
-        order =state.firestore.ordered.order.filter((order)=>
-        order.consumerId===state.firebase.auth.uid
-    )}
+        order =state.firestore.ordered.order;
+    }
     else order = []
     return{
         id:state.firebase.auth.uid,
@@ -29,4 +28,4 @@ var mapStateToProps =(state)=>{
 }
 
 
-export default compose(firestoreConnect([{ collection: 'order'}]), connect(mapStateToProps))(MyOrder)
+export default compose(firestoreConnect([{ collection: 'order'}]), connect(mapStateToProps))(Orders)

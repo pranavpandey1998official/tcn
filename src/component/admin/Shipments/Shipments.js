@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect} from 'react-redux-firebase';
 import Shipment from './Shipment'
-class MyShipments extends React.Component {
+class Shipments extends React.Component {
 render() {
     return(
         <ul>
@@ -17,9 +17,8 @@ render() {
 
 var mapStateToProps =(state)=>{
     if(state.firestore.ordered.shipment!=null){
-    var shipments =state.firestore.ordered.shipment.filter((shipment)=>
-        shipment.supplierId==state.firebase.auth.uid
-    )}
+    var shipments =state.firestore.ordered.shipment
+}
     else var shipments = []
     return{
         id:state.firebase.auth.uid,
@@ -29,8 +28,6 @@ var mapStateToProps =(state)=>{
 
 var mapDispatchToProps =(dispatch)=>{
 
-   
-
 }
 
-export default compose(firestoreConnect([{ collection: 'shipment'}]), connect(mapStateToProps))(MyShipments)
+export default compose(firestoreConnect([{ collection: 'shipment'}]), connect(mapStateToProps))(Shipments)

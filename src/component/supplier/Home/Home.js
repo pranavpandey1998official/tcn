@@ -10,40 +10,35 @@ class Home extends React.Component {
 
     constructor(props){
         super(props);
-        this.onClickFabListner=this.onClickFabListner.bind(this);
     }
-   onClickFabListner=()=> {
-       this.props.history.push("/createOrder/apple")
-   }
     render(){
         var {items}= this.props
        
     return(
         <>
         {items ? items.map((item)=>(
-            <Order item={item} onClickFabListner={this.onClickFabListner}/>
+            <Order item={item}  />
         )) : null}
         </>
     )}
 }
 
 const mapStateToProps = (state) => {
-    var order
-    if(state.firestore.ordered.order==null){
-        order=[]
+    var rates
+    if(state.firestore.ordered.rates==null){
+        rates=[]
     }
     else{
-    order=state.firestore.ordered.order.filter((order)=>(
-        order.remainingAmount > 0
+    rates=state.firestore.ordered.rates.filter((order)=>(
+        order.demandAmount-order.supplyAmount > 0
     ))}
-    console.log(state)
     return{
-        items:order
+        items:rates
     }
 }
 export default compose(
         connect(mapStateToProps),
         firestoreConnect([
-            { collection: 'order'}
+            { collection: 'rates'}
         ])
     )(Home)

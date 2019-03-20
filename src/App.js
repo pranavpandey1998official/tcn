@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom'
 import SupplierMain from './component/supplier/Main';
 import ConsumerMain from './component/consumer/Main';
+import AdminMain from './component/admin/Main';
 import LogOut from './component/logOut/logOut';
 import {connect } from 'react-redux'
 import { withRouter } from "react-router";
@@ -22,6 +23,9 @@ class App extends Component {
     }
     else if(auth.uid==null||this.props.profile.isEmpty){
       link=<Loading />
+    }
+    else if(profile.type=="admin"){
+      link = <AdminMain />
     }
     else{
       link=profile.type=="consumer" ?<ConsumerMain />:<SupplierMain />

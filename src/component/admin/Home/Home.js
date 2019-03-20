@@ -5,29 +5,28 @@ import { firestoreConnect} from 'react-redux-firebase';
 import {connect} from 'react-redux';
 
 
+
 class Home extends React.Component {
 
     constructor(props){
         super(props);
-        this.onClickFabListner=this.onClickFabListner.bind(this);
     }
-   onClickFabListner=(name)=> {
-       this.props.history.push("/createOrder/"+name)
-   }
+
     render(){
         var {items}= this.props
        
     return(
         <div className="container">
-        <div className="row">
-
-        {items ? items.map((item)=>(
             <div className="row">
-                <Order name={item.name} marketPrice={item.marketPrice} key={item.id} price={item.price} onClickFabListner={this.onClickFabListner}/>
+
+            {items ? items.map((item)=>(
+                <div className="row">
+                    <Order item={item} key={item.id} />
                 </div>
-        )) : null}
-        </div>
+            )) : null}
+            </div>
        </div>
+    
     )}
 }
 

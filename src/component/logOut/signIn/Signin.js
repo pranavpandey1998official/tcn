@@ -26,7 +26,6 @@ class Signin extends Component{
     render(){
 
         const { authError} =this.props
-        console.log(authError)
         return(
         
                 <section className="section container">

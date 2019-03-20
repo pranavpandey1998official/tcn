@@ -27,7 +27,8 @@ class Order extends React.Component{
         this.props.createShipment({
             amount:this.state.range,
             id:this.props.item.id,
-            remainingAmount:parseInt(this.props.item.remainingAmount)-parseInt(this.state.range)
+            name:this.props.item.name,
+            currrentSupplyAmount:this.props.item.supplyAmount
         })
         
       }
@@ -40,89 +41,42 @@ class Order extends React.Component{
     }
     render(){
         var item = this.props.item
+        var amount = item.demandAmount-item.supplyAmount
     return(
         <>
         <a className="modal-trigger" href={"#"+item.id}>
-       <div className="row hoverable valign-wrapper">
-        <div className="col m3 left">
-            <img src={"/photoOfCrop/"+item.name+".jpg"} className="responsive-img center" alt=""/>
-        </div>
-        <div className="col m6">
-            <p><b>Item</b> {item.name} </p>
-            <p><b>  Total Demand </b>{item.totalAmount}</p>
-            <div className="row">
-                <div className="col m6">
-                    <div className="btn purple lighten-4"> Rate {item.cost}</div>
-                </div>
-                <div className="col m6">
-                    <div className="btn red">Remaining {item.remainingAmount}Kg</div>
-                </div>
+        <div className="row hoverable">
+            <div className="col s12 m4 ">
+                <img src={"/photoOfCrop/"+item.name+".jpg"} className="responsive-img center" alt=""/>
+            </div>
+            <div className="col s12 m6 ">
+                <h4><b className="black-text">ITEM </b>  {item.name} </h4>
+                <h4><b className="black-text">  Total Demand </b>{amount} Kg</h4>
             </div>
         </div>
-        <div className="col m3 right">
-            <Map
-            style="mapbox://styles/mapbox/streets-v9"
-            containerStyle={{
-                height: "25vh",
-                width: "15vw"
-            }}
-            center={[item.consumerLocation.longitude,item.consumerLocation.latitude ]}
-            zoom={[10]}>
-            <Marker
-                coordinates={[item.consumerLocation.longitude,item.consumerLocation.latitude ]}
-                anchor="bottom">
-                <img className="anchoreColor" src="/baseline-place-24px.svg" alt=""/>
-            </Marker>
-        </Map>
-        </div>
-       </div>
        </a>
        <div id={item.id} class="modal modal-fixed-footer">
         <div class="modal-content">
-        <div className="row">
-            <div className="col s12 m6">
-                <Map
-                style="mapbox://styles/mapbox/streets-v9"
-                containerStyle={{
-                    height: "40vh",
-                    width: "100%"
-                }}
-                center={[item.consumerLocation.longitude,item.consumerLocation.latitude ]}
-                zoom={[10]}>
-                    <Marker
-                        coordinates={[item.consumerLocation.longitude,item.consumerLocation.latitude ]}
-                        anchor="bottom">
-                        <img className="anchoreColor" src="/baseline-place-24px.svg" alt=""/>
-                    </Marker>
-                </Map>
-            </div>
-            <div className="col s12 m6">
-                <div className="row">
-                    <div className="col s12 left">
+            <div className="row">
+                <div className="col s12 offset-m3 m6">
                         <img src={"/photoOfCrop"+"/"+item.name+".jpg"} className="responsive-img center" alt=""/>
-                    </div>
-                </div>
-                <div className="row">
-                <div className="col s6">
-                <p><b>Item</b> {item.name} </p>
-                </div>
-                <div className="col s6">
-                <div className="btn purple lighten-4"> Rate {item.cost}</div>
-                </div>
                 </div>
             </div>
-        </div>
+            <div className="row">
+                <div className="col offset-s3 s6">
+                    <h5><b>Item</b> {item.name} </h5>
+                </div>
+            </div>
         <div className="row">
-        <form>
-            <p class="range-field">
-                <input type="range" min="0" max={item.remainingAmount} value={this.state.range} onChange={this.handleChange} />
-            </p>
-        </form>
+            <form>
+                <p class="range-field">
+                    <input type="range" min="0" max={amount} value={this.state.range} onChange={this.handleChange} />
+                </p>
+            </form>
         </div>
         </div>
             <div class="modal-footer">
                 <div className="btn red lighten-1 hide-on-small-only left"> Amount {this.state.range} Kg</div>
-                <div className="btn red lighten-1 " > Cost {this.state.range*item.cost}&#8377;</div>
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat" onClick={this.handleSubmit}>Agree</a>
             </div>
         </div>   

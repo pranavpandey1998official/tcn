@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "firebase": "^5.7.3",
+    "firebase-functions": "^2.2.0",
     "mapbox-gl": "^0.53.1",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^16.7.0",
